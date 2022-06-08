@@ -1,0 +1,35 @@
+﻿
+@model AWS_E_Commerce.Models.DTOs.LoginDataDTO
+@{
+    ViewData["Title"] = "Login Here";
+}
+<h2>Please login!</h2>
+<form method="post">
+    <div class="row">
+        <div class="col-md-4">
+            <label asp-for="Username" class="control-label"></label>
+            <input asp-for="Username" class="form-control" />
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label asp-for="Password" class="control-label"></label>
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </div>
+    
+    <button type="submit" class="btn btn-primary mt-4">
+        <i class="bi bi-check"></i>
+        LogIn
+    </button>
+    <a asp-action="SignUp" class="btn btn-success mt-4" >
+       <i class="bi bi-arrow-90deg-left"></i>
+       SignUp
+    </a>
+
+</form>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
