@@ -51,10 +51,16 @@ namespace AWS_E_Commerce.Controllers
 
             if (user != null)
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Products");
             }
             ModelState.AddModelError(nameof(data.Password), "Email or Password was incorrect.");
             return View();
         }
+        public async Task<IActionResult> Logout()
+        {
+            await _userService.Logout();
+            return RedirectToAction("Index", "Home");
+        }
+      
     }
 }

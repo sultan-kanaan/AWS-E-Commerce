@@ -26,6 +26,7 @@ namespace AWS_E_Commerce.Models.Services
                 color = product.color,
                 Price = product.Price,
                 size = product.size,
+                ProductImage = product.ProductImage,
                 ProductCategoryName = _context.Categories.FirstOrDefault(c => c.Id == product.ProductCategoryId).Name
             };
             _context.Entry(product).State = EntityState.Added;
@@ -42,9 +43,8 @@ namespace AWS_E_Commerce.Models.Services
                 color = p.color,
                 Price = p.Price,
                 size = p.size,
+                ProductImage = p.ProductImage,
                 ProductCategoryName = _context.Categories.FirstOrDefault(c => c.Id == p.ProductCategoryId).Name
-
-                // CategoryName = _context.Categories.FirstOrDefault(c => c.Id == p.CategoryId).Name
 
             }).FirstOrDefaultAsync(x => x.Id == Id);
         
@@ -59,6 +59,7 @@ namespace AWS_E_Commerce.Models.Services
                 color = p.color,
                 Price = p.Price,
                 size = p.size,
+                ProductImage = p.ProductImage,
                 ProductCategoryName = _context.Categories.FirstOrDefault(c => c.Id == p.ProductCategoryId).Name
 
             }).ToListAsync();
@@ -81,6 +82,7 @@ namespace AWS_E_Commerce.Models.Services
                 color = product.color,
                 Price = product.Price,
                 size = product.size,
+                ProductImage = product.ProductImage,
                 ProductCategoryName = _context.Categories.FirstOrDefault(c => c.Id == product.ProductCategoryId).Name
             };
             _context.Entry(product).State = EntityState.Modified;

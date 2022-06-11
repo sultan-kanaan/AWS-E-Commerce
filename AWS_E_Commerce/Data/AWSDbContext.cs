@@ -25,12 +25,29 @@ namespace AWS_E_Commerce.Data
 
 
             modelBuilder.Entity<ProductCategory>().HasData(
-             new ProductCategory { Id = 1, Name = "Mens " },
-             new ProductCategory { Id = 2, Name = "Womens" }
+             new ProductCategory { Id = 1, Name = "MEN" },
+             new ProductCategory { Id = 2, Name = "WOMEN" },
+             new ProductCategory { Id = 3, Name = "BABY" },
+             new ProductCategory { Id = 4, Name = "NEW ARRIVALS" },
+             new ProductCategory { Id = 5, Name = "BAGS" },
+             new ProductCategory { Id = 6, Name = "BOYS" },
+             new ProductCategory { Id = 7, Name = "GIRLS" },
+             new ProductCategory { Id = 8, Name = "BUY 1 GET 1 FREE" },
+             new ProductCategory { Id = 9, Name = "SHOES" },
+             new ProductCategory { Id = 10, Name = "SPORTSWEAR" }
+
+
            );
             modelBuilder.Entity<Product>().HasData(
-              new Product { Id = 1, Name = "jens ", color = "blue", Price = 15, size = "34", description = "test", ProductCategoryId = 1 },
-              new Product { Id = 2, Name = "shirt", color = "red", Price = 12, size = "L", description = "test", ProductCategoryId = 2 }
+              new Product { Id = 1, Name = "jens ", color = "blue", Price = 15, size = "34", ProductCategoryId = 1 },
+              new Product { Id = 2, Name = "shirt", color = "red", Price = 12, size = "L", ProductCategoryId = 2 },
+              new Product { Id = 3, Name = "babyshirt", color = "white", Price = 8, size = "s", ProductCategoryId = 3 },
+              new Product { Id = 4, Name = "jens ", color = "blue", Price = 15, size = "34", ProductCategoryId = 4 },
+              new Product { Id = 5, Name = "shirt", color = "red", Price = 12, size = "L", ProductCategoryId = 5 },
+              new Product { Id = 6, Name = "shirt", color = "red", Price = 12, size = "L", ProductCategoryId = 6 },
+              new Product { Id = 7, Name = "jens ", color = "blue", Price = 15, size = "34", ProductCategoryId = 7 },
+              new Product { Id = 8, Name = "shirt", color = "red", Price = 12, size = "L", ProductCategoryId = 8 },
+              new Product { Id = 9, Name = "shirt", color = "red", Price = 12, size = "L", ProductCategoryId = 9 }
             );
 
 
@@ -65,5 +82,5 @@ namespace AWS_E_Commerce.Data
             modelBuilder.Entity<IdentityRoleClaim<string>>().HasData(roleClaims);
         }
     }
-    
+
 }

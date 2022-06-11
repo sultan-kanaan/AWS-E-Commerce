@@ -83,5 +83,9 @@ namespace AWS_E_Commerce.Models.Services
                 Username = user.UserName
             };
         }
+        public async Task Logout()
+        {
+            await _signInManager.SignOutAsync();
+        }
     }
 }

@@ -4,14 +4,16 @@ using AWS_E_Commerce.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AWS_E_Commerce.Migrations
 {
     [DbContext(typeof(AWSDbContext))]
-    partial class AWSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220611120416_Azuer")]
+    partial class Azuer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

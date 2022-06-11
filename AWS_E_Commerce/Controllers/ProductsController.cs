@@ -9,6 +9,10 @@ using AWS_E_Commerce.Models;
 using AWS_E_Commerce.Models.Interfaces;
 using AWS_E_Commerce.Models.DTOs;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Http;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
 
 namespace AWS_E_Commerce.Controllers
 {
@@ -16,11 +20,15 @@ namespace AWS_E_Commerce.Controllers
     {
         private readonly IProduct _product;
         private readonly AWSDbContext _context;
+        private readonly IConfiguration _Configuration;
 
-        public ProductsController(IProduct product, AWSDbContext context)
+
+        public ProductsController(IProduct product, AWSDbContext context, IConfiguration config)
         {
             _context = context;
             _product = product;
+            _Configuration = config;
+
         }
 
         // GET: Products
@@ -39,9 +47,13 @@ namespace AWS_E_Commerce.Controllers
         }
 
         // GET: Products/Create
-        [Authorize(Policy = "Administrator")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Create()
         {
+            //if (!User.IsInRole("Administrator"))
+            //{ 
+            //    return RedirectToAction("Login", "Users");
+            //}
             var product = new ProductDTO
             {
              ProductCategory = await _context.Categories.OrderBy(p => p.Name).ToListAsync()
@@ -51,13 +63,31 @@ namespace AWS_E_Commerce.Controllers
 
         // POST: Products/Create
         [HttpPost]
-        public async Task<IActionResult> Create(Product product)
+        public async Task<IActionResult> Create(Product product, IFormFile file)
         {
+            BlobContainerClient container = new BlobContainerClient(_Configuration.GetConnectionString("AzureBlob"), "attac");
+            await container.CreateIfNotExistsAsync();
+            BlobClient blob = container.GetBlobClient(file.FileName);
+            using var stream = file.OpenReadStream();
+
+            BlobUploadOptions options = new BlobUploadOptions()
+            {
+                HttpHeaders = new BlobHttpHeaders() { ContentType = file.ContentType }
+            };
+
+
+            if (!blob.Exists())
+            {
+                await blob.UploadAsync(stream, options);
+            }
+
+            product.ProductImage = blob.Uri.ToString();
             if (ModelState.IsValid)
             {
                 await _product.CreateProduct(product);
                 return RedirectToAction("Index");
             }
+            stream.Close();
             return View(product);
         }
 
@@ -65,18 +95,44 @@ namespace AWS_E_Commerce.Controllers
         [Authorize(Policy = "Editor")]
         public async Task<IActionResult> Edit(int id)
         {
+            var editproduct = await _product.GetProduct(id);
             var product = new ProductDTO
-            {         
-             ProductCategory = await _context.Categories.OrderBy(p =>p.Name).ToListAsync()
+            {
+                Id = editproduct.Id,
+                Name = editproduct.Name,
+                color = editproduct.color,
+                Price = editproduct.Price,
+                size = editproduct.size,
+                ProductImage = editproduct.ProductImage,
+                ProductCategoryId = editproduct.ProductCategoryId,
+                ProductCategory = await _context.Categories.OrderBy(p =>p.Name).ToListAsync()
             };
             return View(product);
         }
 
         // POST: Products/Edit/5
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, Product product)
+        public async Task<IActionResult> Edit(int id, Product product, IFormFile file)
         {
+            BlobContainerClient container = new BlobContainerClient(_Configuration.GetConnectionString("AzureBlob"), "attac");
+            await container.CreateIfNotExistsAsync();
+            BlobClient blob = container.GetBlobClient(file.FileName);
+            using var stream = file.OpenReadStream();
+
+            BlobUploadOptions options = new BlobUploadOptions()
+            {
+                HttpHeaders = new BlobHttpHeaders() { ContentType = file.ContentType }
+            };
+
+
+            if (!blob.Exists())
+            {
+                await blob.UploadAsync(stream, options);
+            }
+
+            product.ProductImage = blob.Uri.ToString();
             await _product.UpdateProduct(id, product);
+            stream.Close();
             return RedirectToAction("Index");
         }
 
