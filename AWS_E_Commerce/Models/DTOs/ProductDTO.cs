@@ -15,7 +15,7 @@ namespace AWS_E_Commerce.Models.DTOs
         public string color { get; set; }
 
         [Display(Name = "Image")]
-        public byte[] ProductImage { get; set; }
+        public string ProductImage { get; set; }
 
         [Display(Name = "Category")]
         public int ProductCategoryId { get; set; }
