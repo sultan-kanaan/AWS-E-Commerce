@@ -16,6 +16,11 @@ AWS E-Commerce  Selling clothes, shoes and bags for all family members
 * As an administrator I would like to be able to delete products and categories as needed
 * As an administrator I would like to be able to edit/modify categories so that I can change my storefront structure in real time
 * As an administrator I would like to be able to edit/modify products so that I can change my inventory in real time
+
+* As an administrator I would like upload a picture for each product so that my shoppers will know what our products look like
+* As an administrator I would like replace a picture for each product so that I can keep my inventory up to date
+* As an administrator, I would like a preview of my product listings so that I can see what my customers will see in the online store
+
 ---
 ## ERD 
 ![](./Assest/ERD.png)
