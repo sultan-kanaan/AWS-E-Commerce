@@ -318,6 +318,7 @@ namespace AWS_E_Commerce.Migrations
                             Id = 3,
                             Name = "babyshirt",
                             Price = 8m,
+
                             ProductCategoryId = 3,
                             color = "white",
                             size = "s"
@@ -336,6 +337,7 @@ namespace AWS_E_Commerce.Migrations
                             Id = 5,
                             Name = "shirt",
                             Price = 12m,
+
                             ProductCategoryId = 5,
                             color = "red",
                             size = "L"
@@ -345,6 +347,7 @@ namespace AWS_E_Commerce.Migrations
                             Id = 6,
                             Name = "shirt",
                             Price = 12m,
+
                             ProductCategoryId = 6,
                             color = "red",
                             size = "L"
@@ -354,6 +357,7 @@ namespace AWS_E_Commerce.Migrations
                             Id = 7,
                             Name = "jens ",
                             Price = 15m,
+
                             ProductCategoryId = 7,
                             color = "blue",
                             size = "34"
@@ -363,6 +367,7 @@ namespace AWS_E_Commerce.Migrations
                             Id = 8,
                             Name = "shirt",
                             Price = 12m,
+
                             ProductCategoryId = 8,
                             color = "red",
                             size = "L"
@@ -372,6 +377,7 @@ namespace AWS_E_Commerce.Migrations
                             Id = 9,
                             Name = "shirt",
                             Price = 12m,
+
                             ProductCategoryId = 9,
                             color = "red",
                             size = "L"
