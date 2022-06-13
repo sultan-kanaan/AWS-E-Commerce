@@ -22,7 +22,7 @@
 {
     <div class="card" style="width: 21rem;">
 
-        <img src="./Assest/jeans.png" class="card-img-top" alt="Logo" width="50" height="280">
+        <img src=" @Html.DisplayFor(modelItem => item.ProductImage)" class="card-img-top" alt="Logo" width="50" height="280">
         <div class="card-body">
 
             <h4 class="card-title">
@@ -63,4 +63,18 @@
     </div>
     <hr />
 }
+<style>
+    #card {
+        min-height: 236px;
+        background-position: center;
+        background-size: 100%;
+        transition: all 0.3s ease-in-out;
+    }
+
+        #card:hover {
+            background-size: 125%;
+            transition: all 0.3s ease-in-out;
+        }
+</style>
+
 

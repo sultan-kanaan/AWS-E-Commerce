@@ -24,16 +24,38 @@
                         <li class="nav-item">
                             <a class="badge text-danger" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="badge text-danger" asp-area="" asp-controller="Users" asp-action="Login">Login</a>
-                        </li>
+
+
                         <li class="nav-item">
                             <a class="badge text-danger" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
                         </li>
                         <li class="nav-item">
                             <a class="badge text-danger" asp-area="" asp-controller="ProductCategories" asp-action="Index">Categories</a>
                         </li>
-                        
+
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle badge text-danger" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" asp-area="" asp-controller="Users" asp-action="Index">Register</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item badge text-danger" asp-area="" asp-controller="Users" asp-action="Login">Login</a>
+                                    <a class="dropdown-item badge text-danger" asp-area="" asp-controller="Users" asp-action="SignUp">SignUp</a>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="badge text-danger" asp-area="" asp-controller="Users" asp-action="Logout">Logout</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="badge table-success">@User.Identity.Name</a>
+                            </li>
+
+                        }
+
+
                     </ul>
                 </div>
             </div>
