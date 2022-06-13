@@ -151,5 +151,7 @@ namespace AWS_E_Commerce.Controllers
             await _product.DeleteProduct(id);
             return RedirectToAction("Index");
         }
-    } 
+       
+    }
+
 }
