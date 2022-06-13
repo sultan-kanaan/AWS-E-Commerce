@@ -1,0 +1,15 @@
+﻿@page
+@model AWS_E_Commerce.Pages.Cart.IndexModel
+
+@if (Model.products.Count == 0)
+{
+    <p>There is no products...</p> }
+else
+{
+    @foreach (var item in Model.products)
+    {
+        <ul>
+            <li>
+                @item.Name
+            </li>
+        </ul>}}

@@ -24,17 +24,12 @@
                         <li class="nav-item">
                             <a class="badge text-danger" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-
-
-
                         <li class="nav-item">
-                            <a class="badge text-danger" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="badge text-danger" asp-area="" asp-controller="ProductCategories" asp-action="Index">Categories</a>
+                            <a class="badge text-danger" asp-page="/Cart/Index">My Cart</a>
                         </li>
 
-                   
+
+                        
 
                         @if (!User.Identity.IsAuthenticated)
                         {
@@ -56,7 +51,7 @@
                                 <a class="badge table-success">@User.Identity.Name</a>
                             </li>
 
-         }
+                        }
 
 
                     </ul>

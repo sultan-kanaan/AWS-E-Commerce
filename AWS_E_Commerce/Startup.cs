@@ -51,7 +51,7 @@ namespace AWS_E_Commerce
             services.AddTransient<IProduct, ProductRepository>();
             services.AddTransient<ICategory, CategoryRepository>();
             services.AddTransient<IUserService, UserService>();
-
+            services.AddRazorPages();
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("Administrator", policy => policy.RequireClaim("permissions", "Administrator"));
@@ -81,9 +81,8 @@ namespace AWS_E_Commerce
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
             });
         }
     }

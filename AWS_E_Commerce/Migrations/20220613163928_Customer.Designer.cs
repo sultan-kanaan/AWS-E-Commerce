@@ -4,14 +4,16 @@ using AWS_E_Commerce.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AWS_E_Commerce.Migrations
 {
     [DbContext(typeof(AWSDbContext))]
-    partial class AWSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220613163928_Customer")]
+    partial class Customer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -318,7 +320,6 @@ namespace AWS_E_Commerce.Migrations
                             Id = 3,
                             Name = "babyshirt",
                             Price = 8m,
-
                             ProductCategoryId = 3,
                             color = "white",
                             size = "s"
@@ -337,7 +338,6 @@ namespace AWS_E_Commerce.Migrations
                             Id = 5,
                             Name = "shirt",
                             Price = 12m,
-
                             ProductCategoryId = 5,
                             color = "red",
                             size = "L"
@@ -347,7 +347,6 @@ namespace AWS_E_Commerce.Migrations
                             Id = 6,
                             Name = "shirt",
                             Price = 12m,
-
                             ProductCategoryId = 6,
                             color = "red",
                             size = "L"
@@ -357,7 +356,6 @@ namespace AWS_E_Commerce.Migrations
                             Id = 7,
                             Name = "jens ",
                             Price = 15m,
-
                             ProductCategoryId = 7,
                             color = "blue",
                             size = "34"
@@ -367,7 +365,6 @@ namespace AWS_E_Commerce.Migrations
                             Id = 8,
                             Name = "shirt",
                             Price = 12m,
-
                             ProductCategoryId = 8,
                             color = "red",
                             size = "L"
@@ -377,7 +374,6 @@ namespace AWS_E_Commerce.Migrations
                             Id = 9,
                             Name = "shirt",
                             Price = 12m,
-
                             ProductCategoryId = 9,
                             color = "red",
                             size = "L"
