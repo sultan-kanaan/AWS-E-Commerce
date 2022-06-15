@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AWS_E_Commerce.Models.DTOs;
 
 namespace AWS_E_Commerce.Data
 {
@@ -18,6 +19,10 @@ namespace AWS_E_Commerce.Data
         }
         public DbSet<ProductCategory> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // This calls the base method, but does nothing
@@ -53,6 +58,8 @@ namespace AWS_E_Commerce.Data
 
             SeedRole(modelBuilder, "Administrator", "Administrator", "Editor");
             SeedRole(modelBuilder, "Editor", "Editor");
+            SeedRole(modelBuilder, "Customer", "Customer");
+
 
         }
 

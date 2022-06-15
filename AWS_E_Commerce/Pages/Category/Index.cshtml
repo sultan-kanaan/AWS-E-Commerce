@@ -1,0 +1,40 @@
+﻿@page
+@model AWS_E_Commerce.Pages.Category.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>
+    <i class="bi bi-list"></i>
+    Categories
+</h2>
+
+<hr />
+
+@foreach (var item in Model.Category)
+{
+<div class="col-sm-6">
+    <div class="card">
+        <div class="card-header">
+            @item.Name Category
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                @Html.DisplayFor(modelItem => item.Name)
+            </h5>
+            <div class="card-text">
+                <i> Here is a group of @Html.DisplayFor(modelItem => item.Name) Products </i>
+            </div>
+            <br>
+            <div>
+                <a asp-page="/Category/Details" asp-route-id="@item.Id" class="btn btn-outline-success">
+                    <i class="bi bi-info"></i>
+                    Details
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+}

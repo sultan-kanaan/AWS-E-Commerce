@@ -37,7 +37,8 @@ namespace AWS_E_Commerce.Models.Services
 
                 // Administrator
                 // Editor
-                await _userManager.AddToRoleAsync(user, "Editor");
+                // Customer
+                await _userManager.AddToRoleAsync(user, "Customer");
                 return new UserDTO
                 {
                     Id = user.Id,
