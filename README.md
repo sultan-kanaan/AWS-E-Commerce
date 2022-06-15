@@ -15,6 +15,7 @@ AWS E-Commerce  Selling clothes, shoes and bags for all family members
 * As an administrator I would like add and save a new category so that I can expand my product lines
 * As an administrator I would like add and save a new product so that I can expand my inventory
 * As an administrator I would like to associate a product to a category so that my users can more easily browse our inventory
+
 * As an administrator I would like to be able to delete products and categories as needed
 * As an administrator I would like to be able to edit/modify categories so that I can change my storefront structure in real time
 * As an administrator I would like to be able to edit/modify products so that I can change my inventory in real time
