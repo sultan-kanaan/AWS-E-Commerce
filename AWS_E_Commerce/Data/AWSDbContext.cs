@@ -19,9 +19,9 @@ namespace AWS_E_Commerce.Data
         }
         public DbSet<ProductCategory> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<CartItem> ShoppingCartItems { get; set; }
-         public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -58,7 +58,7 @@ namespace AWS_E_Commerce.Data
 
             SeedRole(modelBuilder, "Administrator", "Administrator", "Editor");
             SeedRole(modelBuilder, "Editor", "Editor");
-            SeedRole(modelBuilder, "Customer");
+            SeedRole(modelBuilder, "Customer", "Customer");
 
 
         }
@@ -88,7 +88,6 @@ namespace AWS_E_Commerce.Data
 
             modelBuilder.Entity<IdentityRoleClaim<string>>().HasData(roleClaims);
         }
-        public DbSet<AWS_E_Commerce.Models.DTOs.ProductCategoryDTO> ProductCategoryDTO { get; set; }
     }
 
 }

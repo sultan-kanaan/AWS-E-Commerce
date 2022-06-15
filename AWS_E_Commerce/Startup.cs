@@ -4,6 +4,7 @@ using AWS_E_Commerce.Models.Interfaces;
 using AWS_E_Commerce.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -39,23 +40,32 @@ namespace AWS_E_Commerce
                 options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<AWSDbContext>();
 
+            services.AddMemoryCache();
+            services.AddSession();
             services.AddAuthentication();
             services.AddAuthorization();
 
 
+
             services.ConfigureApplicationCookie(options =>
             {
-                options.AccessDeniedPath = "/auth/index";
+                options.AccessDeniedPath = "/Users/Login";
             });
 
             services.AddTransient<IProduct, ProductRepository>();
             services.AddTransient<ICategory, CategoryRepository>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IOrder, OrdersService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<ShoppingCart>();
+
             services.AddRazorPages();
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("Administrator", policy => policy.RequireClaim("permissions", "Administrator"));
                 options.AddPolicy("Editor", policy => policy.RequireClaim("permissions", "Editor"));
+                options.AddPolicy("Customer", policy => policy.RequireClaim("permissions", "Customer"));
+
             });
 
             }
@@ -75,6 +85,8 @@ namespace AWS_E_Commerce
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
+
 
             app.UseAuthentication();
             app.UseAuthorization();

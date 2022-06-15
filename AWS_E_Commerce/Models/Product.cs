@@ -15,7 +15,7 @@ namespace AWS_E_Commerce.Models
         public string Name { get; set; }
         [Column(TypeName = "money")]
 
-        public decimal Price { get; set; }
+        public double Price { get; set; }
         public string size { get; set; }
         public string color { get; set; }
         public string ProductImage { get; set; }

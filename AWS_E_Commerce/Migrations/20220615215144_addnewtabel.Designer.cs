@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWS_E_Commerce.Migrations
 {
     [DbContext(typeof(AWSDbContext))]
-    [Migration("20220613163928_Customer")]
-    partial class Customer
+    [Migration("20220615215144_addnewtabel")]
+    partial class addnewtabel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -86,45 +86,6 @@ namespace AWS_E_Commerce.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("AWS_E_Commerce.Models.CartItem", b =>
-                {
-                    b.Property<string>("ItemId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CartId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("ItemId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ShoppingCartItems");
-                });
-
-            modelBuilder.Entity("AWS_E_Commerce.Models.DTOs.ProductCategoryDTO", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProductCategoryDTO");
-                });
-
             modelBuilder.Entity("AWS_E_Commerce.Models.DTOs.ProductDTO", b =>
                 {
                     b.Property<int>("Id")
@@ -137,9 +98,6 @@ namespace AWS_E_Commerce.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
-
-                    b.Property<int?>("ProductCategoryDTOId")
-                        .HasColumnType("int");
 
                     b.Property<int>("ProductCategoryId")
                         .HasColumnType("int");
@@ -158,108 +116,55 @@ namespace AWS_E_Commerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductCategoryDTOId");
-
                     b.ToTable("ProductDTO");
                 });
 
             modelBuilder.Entity("AWS_E_Commerce.Models.Order", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(70)
-                        .HasColumnType("nvarchar(70)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
-
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(160)
-                        .HasColumnType("nvarchar(160)");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<bool>("HasBeenShipped")
-                        .HasColumnType("bit");
+                    b.HasKey("Id");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(160)
-                        .HasColumnType("nvarchar(160)");
-
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PaymentTransactionId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasMaxLength(24)
-                        .HasColumnType("nvarchar(24)");
-
-                    b.Property<string>("PostalCode")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
-
-                    b.Property<decimal>("Total")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Username")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("OrderId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("AWS_E_Commerce.Models.OrderDetail", b =>
+            modelBuilder.Entity("AWS_E_Commerce.Models.OrderItem", b =>
                 {
-                    b.Property<int>("OrderDetailId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<double?>("UnitPrice")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Username")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("OrderDetailId");
+                    b.HasKey("Id");
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderDetails");
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("AWS_E_Commerce.Models.Product", b =>
@@ -452,6 +357,29 @@ namespace AWS_E_Commerce.Migrations
                         });
                 });
 
+            modelBuilder.Entity("AWS_E_Commerce.Models.ShoppingCartItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ShoppingCartId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("productId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("productId");
+
+                    b.ToTable("ShoppingCartItems");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -546,6 +474,13 @@ namespace AWS_E_Commerce.Migrations
                             ClaimType = "permissions",
                             ClaimValue = "Editor",
                             RoleId = "editor"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ClaimType = "permissions",
+                            ClaimValue = "Customer",
+                            RoleId = "customer"
                         });
                 });
 
@@ -629,31 +564,32 @@ namespace AWS_E_Commerce.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("AWS_E_Commerce.Models.CartItem", b =>
+            modelBuilder.Entity("AWS_E_Commerce.Models.Order", b =>
                 {
-                    b.HasOne("AWS_E_Commerce.Models.Product", "Product")
+                    b.HasOne("AWS_E_Commerce.Auth.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("AWS_E_Commerce.Models.OrderItem", b =>
+                {
+                    b.HasOne("AWS_E_Commerce.Models.Order", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AWS_E_Commerce.Models.DTOs.ProductDTO", "product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Product");
-                });
+                    b.Navigation("Order");
 
-            modelBuilder.Entity("AWS_E_Commerce.Models.DTOs.ProductDTO", b =>
-                {
-                    b.HasOne("AWS_E_Commerce.Models.DTOs.ProductCategoryDTO", null)
-                        .WithMany("products")
-                        .HasForeignKey("ProductCategoryDTOId");
-                });
-
-            modelBuilder.Entity("AWS_E_Commerce.Models.OrderDetail", b =>
-                {
-                    b.HasOne("AWS_E_Commerce.Models.Order", null)
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("product");
                 });
 
             modelBuilder.Entity("AWS_E_Commerce.Models.Product", b =>
@@ -672,6 +608,17 @@ namespace AWS_E_Commerce.Migrations
                     b.HasOne("AWS_E_Commerce.Models.DTOs.ProductDTO", null)
                         .WithMany("ProductCategory")
                         .HasForeignKey("ProductDTOId");
+                });
+
+            modelBuilder.Entity("AWS_E_Commerce.Models.ShoppingCartItem", b =>
+                {
+                    b.HasOne("AWS_E_Commerce.Models.Product", "product")
+                        .WithMany()
+                        .HasForeignKey("productId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("product");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -725,11 +672,6 @@ namespace AWS_E_Commerce.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("AWS_E_Commerce.Models.DTOs.ProductCategoryDTO", b =>
-                {
-                    b.Navigation("products");
-                });
-
             modelBuilder.Entity("AWS_E_Commerce.Models.DTOs.ProductDTO", b =>
                 {
                     b.Navigation("ProductCategory");
@@ -737,7 +679,7 @@ namespace AWS_E_Commerce.Migrations
 
             modelBuilder.Entity("AWS_E_Commerce.Models.Order", b =>
                 {
-                    b.Navigation("OrderDetails");
+                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("AWS_E_Commerce.Models.ProductCategory", b =>
