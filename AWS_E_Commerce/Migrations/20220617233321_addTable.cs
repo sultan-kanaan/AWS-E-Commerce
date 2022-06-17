@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AWS_E_Commerce.Migrations
 {
-    public partial class addNewOne : Migration
+    public partial class addTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -291,10 +291,10 @@ namespace AWS_E_Commerce.Migrations
                 columns: new[] { "Id", "ClaimType", "ClaimValue", "RoleId" },
                 values: new object[,]
                 {
+                    { 4, "permissions", "Customer", "customer" },
                     { 1, "permissions", "Administrator", "administrator" },
-                    { 2, "permissions", "Editor", "administrator" },
                     { 3, "permissions", "Editor", "editor" },
-                    { 4, "permissions", "Customer", "customer" }
+                    { 2, "permissions", "Editor", "administrator" }
                 });
 
             migrationBuilder.InsertData(
@@ -302,15 +302,36 @@ namespace AWS_E_Commerce.Migrations
                 columns: new[] { "Id", "Name", "Price", "ProductCategoryId", "ProductImage", "color", "description", "size" },
                 values: new object[,]
                 {
-                    { 1, "jens ", 15m, 1, null, "blue", null, "34" },
-                    { 2, "shirt", 12m, 2, null, "red", null, "L" },
-                    { 3, "babyshirt", 8m, 3, null, "white", null, "s" },
-                    { 4, "jens ", 15m, 4, null, "blue", null, "34" },
-                    { 5, "shirt", 12m, 5, null, "red", null, "L" },
-                    { 6, "shirt", 12m, 6, null, "red", null, "L" },
-                    { 7, "jens ", 15m, 7, null, "blue", null, "34" },
-                    { 8, "shirt", 12m, 8, null, "red", null, "L" },
-                    { 9, "shirt", 12m, 9, null, "red", null, "L" }
+                    { 14, "Child SPORTS WEAR", 18.99m, 10, "https://sultan.blob.core.windows.net/attac/KidsSPORTSWEAR.png", "vinous", null, "S" },
+                    { 13, "Women SPORTS WEAR", 32.99m, 10, "https://sultan.blob.core.windows.net/attac/WomenTrackSuits.jfif", "Selver", null, "M" },
+                    { 12, "Men SPORTS WEAR", 35.99m, 10, "https://sultan.blob.core.windows.net/attac/MenSPORTSWEAR.png", "Black", null, "L" },
+                    { 11, "Child Sport Shoes", 12.99m, 9, "https://sultan.blob.core.windows.net/attac/ChildSportShoes.png", "white", null, "20" },
+                    { 10, "Women Shoes", 12.99m, 9, "https://sultan.blob.core.windows.net/attac/WomenShoes.png", "Pink", null, "37" },
+                    { 24, "Boy Suit", 65.99m, 6, "https://sultan.blob.core.windows.net/attac/BoyS.png", "Navy blue", null, "42" },
+                    { 26, "Dress ", 15.99m, 8, "https://sultan.blob.core.windows.net/attac/GirlsDress.png", "blue", null, "34" },
+                    { 25, "Boy Suit", 65.99m, 8, "https://sultan.blob.core.windows.net/attac/BoyS.png", "Navy blue", null, "42" },
+                    { 7, "Fleece Bear", 14.99m, 8, "https://sultan.blob.core.windows.net/attac/FleeceBear.png", "white", null, "s" },
+                    { 29, "Girl Jacket", 29.99m, 7, "https://sultan.blob.core.windows.net/attac/GilrsJ.png", "Black and white", null, "S" },
+                    { 27, "Girl shirt", 16.99m, 7, "https://sultan.blob.core.windows.net/attac/girlsB.png", "White and blue", null, "L" },
+                    { 8, "Dress ", 15.99m, 7, "https://sultan.blob.core.windows.net/attac/GirlsDress.png", "blue", null, "M" },
+                    { 9, "Men Shoes", 12.99m, 9, "https://sultan.blob.core.windows.net/attac/shos.png", "white", null, "41" },
+                    { 23, "Boy Jacket", 28.99m, 6, "https://sultan.blob.core.windows.net/attac/boyj.png", "Green and white", null, "M" },
+                    { 22, "Shoulder Bag ", 8.99m, 5, "https://sultan.blob.core.windows.net/attac/shoulderbag.png", "offwhite", null, "N/A" },
+                    { 21, "BackPack", 18.99m, 5, "https://sultan.blob.core.windows.net/attac/BlackBag.png", "Black", null, "N/A" },
+                    { 5, "white Bag", 12.99m, 5, "https://sultan.blob.core.windows.net/attac/whiteBAGS.png", "white", null, "N/A" },
+                    { 31, "Men SPORTS WEAR", 35.99m, 4, "https://sultan.blob.core.windows.net/attac/MenSPORTSWEAR.png", "Black", null, "L" },
+                    { 30, "Fleece Bear", 14.99m, 4, "https://sultan.blob.core.windows.net/attac/FleeceBear.png", "white", null, "s" },
+                    { 4, "Men Suit", 99.99m, 4, "https://sultan.blob.core.windows.net/attac/MenSuits.png", "vinous", null, "52" },
+                    { 20, "baby set", 18.99m, 3, "https://sultan.blob.core.windows.net/attac/BabyJeans.png", "jeans", null, "L" },
+                    { 19, "Baby Jacket", 19.99m, 3, "https://sultan.blob.core.windows.net/attac/BabyJacket.png", "Pink", null, "S" },
+                    { 3, "Fleece Bear", 14.99m, 3, "https://sultan.blob.core.windows.net/attac/FleeceBear.png", "white", null, "s" },
+                    { 2, "Women's T-Shirts", 12.99m, 2, "https://sultan.blob.core.windows.net/attac/WomenT-Shirts.png", "Pink", null, "L" },
+                    { 18, "Women White Stripe Longline Blouse ", 13.99m, 2, "https://sultan.blob.core.windows.net/attac/WhiteBlouse.png", "white", null, "M" },
+                    { 17, "Women jeans ", 15.99m, 2, "https://sultan.blob.core.windows.net/attac/Wjens.png", "blue", null, "28" },
+                    { 16, "Men Suit", 99.99m, 1, "https://sultan.blob.core.windows.net/attac/MenSuits.png", "vinous", null, "52" },
+                    { 15, "Men jeans shirt", 11.99m, 1, "https://sultan.blob.core.windows.net/attac/jeansShirt.png", "jeans", null, "L" },
+                    { 6, "Polo shirt", 11.99m, 6, "https://sultan.blob.core.windows.net/attac/poloB.png", "Pink", null, "L" },
+                    { 1, "Men jeans ", 14.99m, 1, "https://sultan.blob.core.windows.net/attac/jeans.png", "blue", null, "34" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -170,83 +170,302 @@ namespace AWS_E_Commerce.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "jens ",
-                            Price = 15m,
+                            Name = "Men jeans ",
+                            Price = 14.99m,
                             ProductCategoryId = 1,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/jeans.png",
                             color = "blue",
                             size = "34"
                         },
                         new
                         {
-                            Id = 2,
-                            Name = "shirt",
-                            Price = 12m,
+                            Id = 15,
+                            Name = "Men jeans shirt",
+                            Price = 11.99m,
+                            ProductCategoryId = 1,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/jeansShirt.png",
+                            color = "jeans",
+                            size = "L"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Name = "Men Suit",
+                            Price = 99.99m,
+                            ProductCategoryId = 1,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/MenSuits.png",
+                            color = "vinous",
+                            size = "52"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Name = "Women jeans ",
+                            Price = 15.99m,
                             ProductCategoryId = 2,
-                            color = "red",
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/Wjens.png",
+                            color = "blue",
+                            size = "28"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Name = "Women White Stripe Longline Blouse ",
+                            Price = 13.99m,
+                            ProductCategoryId = 2,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/WhiteBlouse.png",
+                            color = "white",
+                            size = "M"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Women's T-Shirts",
+                            Price = 12.99m,
+                            ProductCategoryId = 2,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/WomenT-Shirts.png",
+                            color = "Pink",
                             size = "L"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "babyshirt",
-                            Price = 8m,
+                            Name = "Fleece Bear",
+                            Price = 14.99m,
                             ProductCategoryId = 3,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/FleeceBear.png",
                             color = "white",
                             size = "s"
                         },
                         new
                         {
+                            Id = 19,
+                            Name = "Baby Jacket",
+                            Price = 19.99m,
+                            ProductCategoryId = 3,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/BabyJacket.png",
+                            color = "Pink",
+                            size = "S"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Name = "baby set",
+                            Price = 18.99m,
+                            ProductCategoryId = 3,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/BabyJeans.png",
+                            color = "jeans",
+                            size = "L"
+                        },
+                        new
+                        {
                             Id = 4,
-                            Name = "jens ",
-                            Price = 15m,
+                            Name = "Men Suit",
+                            Price = 99.99m,
                             ProductCategoryId = 4,
-                            color = "blue",
-                            size = "34"
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/MenSuits.png",
+                            color = "vinous",
+                            size = "52"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Name = "Fleece Bear",
+                            Price = 14.99m,
+                            ProductCategoryId = 4,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/FleeceBear.png",
+                            color = "white",
+                            size = "s"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Name = "Men SPORTS WEAR",
+                            Price = 35.99m,
+                            ProductCategoryId = 4,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/MenSPORTSWEAR.png",
+                            color = "Black",
+                            size = "L"
                         },
                         new
                         {
                             Id = 5,
-                            Name = "shirt",
-                            Price = 12m,
+                            Name = "white Bag",
+                            Price = 12.99m,
                             ProductCategoryId = 5,
-                            color = "red",
-                            size = "L"
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/whiteBAGS.png",
+                            color = "white",
+                            size = "N/A"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Name = "BackPack",
+                            Price = 18.99m,
+                            ProductCategoryId = 5,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/BlackBag.png",
+                            color = "Black",
+                            size = "N/A"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Name = "Shoulder Bag ",
+                            Price = 8.99m,
+                            ProductCategoryId = 5,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/shoulderbag.png",
+                            color = "offwhite",
+                            size = "N/A"
                         },
                         new
                         {
                             Id = 6,
-                            Name = "shirt",
-                            Price = 12m,
+                            Name = "Polo shirt",
+                            Price = 11.99m,
                             ProductCategoryId = 6,
-                            color = "red",
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/poloB.png",
+                            color = "Pink",
                             size = "L"
                         },
                         new
                         {
+                            Id = 23,
+                            Name = "Boy Jacket",
+                            Price = 28.99m,
+                            ProductCategoryId = 6,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/boyj.png",
+                            color = "Green and white",
+                            size = "M"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Name = "Boy Suit",
+                            Price = 65.99m,
+                            ProductCategoryId = 6,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/BoyS.png",
+                            color = "Navy blue",
+                            size = "42"
+                        },
+                        new
+                        {
                             Id = 7,
-                            Name = "jens ",
-                            Price = 15m,
-                            ProductCategoryId = 7,
+                            Name = "Fleece Bear",
+                            Price = 14.99m,
+                            ProductCategoryId = 8,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/FleeceBear.png",
+                            color = "white",
+                            size = "s"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Name = "Boy Suit",
+                            Price = 65.99m,
+                            ProductCategoryId = 8,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/BoyS.png",
+                            color = "Navy blue",
+                            size = "42"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Name = "Dress ",
+                            Price = 15.99m,
+                            ProductCategoryId = 8,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/GirlsDress.png",
                             color = "blue",
                             size = "34"
                         },
                         new
                         {
                             Id = 8,
-                            Name = "shirt",
-                            Price = 12m,
-                            ProductCategoryId = 8,
-                            color = "red",
+                            Name = "Dress ",
+                            Price = 15.99m,
+                            ProductCategoryId = 7,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/GirlsDress.png",
+                            color = "blue",
+                            size = "M"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Name = "Girl shirt",
+                            Price = 16.99m,
+                            ProductCategoryId = 7,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/girlsB.png",
+                            color = "White and blue",
                             size = "L"
                         },
                         new
                         {
+                            Id = 29,
+                            Name = "Girl Jacket",
+                            Price = 29.99m,
+                            ProductCategoryId = 7,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/GilrsJ.png",
+                            color = "Black and white",
+                            size = "S"
+                        },
+                        new
+                        {
                             Id = 9,
-                            Name = "shirt",
-                            Price = 12m,
+                            Name = "Men Shoes",
+                            Price = 12.99m,
                             ProductCategoryId = 9,
-                            color = "red",
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/shos.png",
+                            color = "white",
+                            size = "41"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Women Shoes",
+                            Price = 12.99m,
+                            ProductCategoryId = 9,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/WomenShoes.png",
+                            color = "Pink",
+                            size = "37"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Child Sport Shoes",
+                            Price = 12.99m,
+                            ProductCategoryId = 9,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/ChildSportShoes.png",
+                            color = "white",
+                            size = "20"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Men SPORTS WEAR",
+                            Price = 35.99m,
+                            ProductCategoryId = 10,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/MenSPORTSWEAR.png",
+                            color = "Black",
                             size = "L"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Women SPORTS WEAR",
+                            Price = 32.99m,
+                            ProductCategoryId = 10,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/WomenTrackSuits.jfif",
+                            color = "Selver",
+                            size = "M"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "Child SPORTS WEAR",
+                            Price = 18.99m,
+                            ProductCategoryId = 10,
+                            ProductImage = "https://sultan.blob.core.windows.net/attac/KidsSPORTSWEAR.png",
+                            color = "vinous",
+                            size = "S"
                         });
                 });
 
