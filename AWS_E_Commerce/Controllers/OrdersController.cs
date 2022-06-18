@@ -1,6 +1,7 @@
 ﻿using AWS_E_Commerce.Models.DTOs;
 using AWS_E_Commerce.Models.Interfaces;
 using AWS_E_Commerce.Models.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,7 @@ namespace AWS_E_Commerce.Controllers
 
             return View(response);
         }
+        [Authorize(Policy = "Customer")]
 
         public async Task<IActionResult> AddItemToShoppingCart(int id)
         {
