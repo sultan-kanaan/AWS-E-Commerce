@@ -9,7 +9,7 @@
     Products
 </h2>
 <hr />
-@if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+@if (User.Identity.IsAuthenticated && User.IsInRole("Administrator") || User.IsInRole("Editor"))
 {
     <p>
         <a class="btn btn-outline-primary" asp-action="Create">
@@ -30,7 +30,7 @@
                                 <p class="card-text">
                                     <h5 class="card-title">
                                         @item.Name
-                                        @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+                                        @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator") || User.IsInRole("Editor"))
                                         {
                                             <a class="text-white float-right" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i></a>
                                             <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
@@ -57,7 +57,7 @@
                                     <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Id">
                                         <i class="bi bi-eye-fill"></i> Show Details
                                     </a>
-                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
+                                    @if (!User.Identity.IsAuthenticated || User.Identity.IsAuthenticated && User.IsInRole("Customer"))
                                     {
 
                                         <a class="btn btn-outline-success " asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@item.Id">

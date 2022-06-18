@@ -16,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AWS E-Commerce</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AWS Fashion </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -27,14 +27,17 @@
                             <a class="badge text-danger" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
 
+                        @if (!User.Identity.IsAuthenticated || User.Identity.IsAuthenticated && User.IsInRole("Customer"))
+                        {
 
-                        <li class="nav-item">
-                            <a class="badge text-danger" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="badge text-danger" asp-area="" asp-controller="ProductCategories" asp-action="Index">Categories</a>
-                        </li>
-                        @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+                            <li class="nav-item">
+                                <a class="badge text-danger" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="badge text-danger" asp-area="" asp-controller="ProductCategories" asp-action="Index">Categories</a>
+                            </li>
+                        }
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator") || User.IsInRole("Editor"))
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle badge text-danger" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,27 +51,7 @@
                             </li>
                         }
 
-                        @*@if (!User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle badge text-danger" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" asp-area="" asp-controller="Users" asp-action="Index">Register</a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item badge text-danger" asp-area="" asp-controller="Users" asp-action="Login">Login</a>
-                                    <a class="dropdown-item badge text-danger" asp-area="" asp-controller="Users" asp-action="SignUp">SignUp</a>
-                                </div>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="badge text-danger" asp-area="" asp-controller="Users" asp-action="Logout">Logout</a>
-                            </li>
 
-                            <li class="nav-item">
-                                <a class="badge table-success">@User.Identity.Name</a>
-                            </li>
-
-                        }*@
 
 
                     </ul>
