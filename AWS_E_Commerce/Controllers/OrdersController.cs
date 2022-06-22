@@ -1,8 +1,13 @@
-﻿using AWS_E_Commerce.Models.DTOs;
+﻿using AWS_E_Commerce.Auth.Models;
+using AWS_E_Commerce.Models;
+using AWS_E_Commerce.Models.DTOs;
 using AWS_E_Commerce.Models.Interfaces;
 using AWS_E_Commerce.Models.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +21,16 @@ namespace AWS_E_Commerce.Controllers
         private readonly IProduct _product;
         private readonly ShoppingCart _shoppingCart;
         private readonly IOrder _order;
+        private readonly EmailService _email;
 
-        public OrdersController(IProduct product, ShoppingCart shoppingCart, IOrder order)
+
+
+        public OrdersController(IProduct product, ShoppingCart shoppingCart, IOrder order, EmailService email)
         {
             _product = product;
             _shoppingCart = shoppingCart;
             _order = order;
+            _email = email;
         }
 
         public async Task<IActionResult> Index()
@@ -54,7 +63,7 @@ namespace AWS_E_Commerce.Controllers
 
             if (item != null)
             {
-                
+
                 _shoppingCart.AddItemToCart(item);
             }
             return RedirectToAction(nameof(ShoppingCart));
@@ -73,12 +82,24 @@ namespace AWS_E_Commerce.Controllers
 
         public async Task<IActionResult> CompleteOrder()
         {
+
             var items = _shoppingCart.GetShoppingCartItems();
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             string userEmailAddress = User.FindFirstValue(ClaimTypes.Email);
 
             await _order.StoreOrderAsync(items, userId, userEmailAddress);
             await _shoppingCart.ClearShoppingCartAsync();
+
+            string message = "Order Summary : \n \n ";
+
+            foreach (ShoppingCartItem shopping in items)
+            {
+                message += "you bought a " +  shopping.product.Name + "for a price " + shopping.product.Price;
+            }
+
+            await _email.SendEmail(message, "21029318@student.ltuc.com", "Order Summary");
+            await _email.SendEmail(message, "sultan.kanaan@yahoo.com", "Order Summary");
+            await _email.SendEmail(message, userEmailAddress, "Order Summary");
 
             return View();
         }

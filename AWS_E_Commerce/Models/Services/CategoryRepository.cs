@@ -44,7 +44,10 @@ namespace AWS_E_Commerce.Models.Services
                 Name = C.Name,
                 products = C.products.Select(p => new ProductDTO
                 {
-                    Name = p.Name
+                    Name = p.Name,
+                    ProductImage = p.ProductImage
+                    
+                    
 
                 }).ToList()
 
@@ -61,7 +64,11 @@ namespace AWS_E_Commerce.Models.Services
                 {
                     Id = p.Id,
                     Name = p.Name,
-                    Price = p.Price
+                    Price = p.Price,
+                    color = p.color,
+                    size = p.size,
+                    ProductImage = p.ProductImage
+
 
                 }).ToList()
 
