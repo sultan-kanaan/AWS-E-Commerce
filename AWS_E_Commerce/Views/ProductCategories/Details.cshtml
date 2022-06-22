@@ -37,11 +37,10 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <img src="@Html.DisplayFor(modelItem => item.ProductImage)" style="max-width: 130px;" ,"max-height="130px" alt="@item.Name">
+                            <img src="@item.ProductImage" style="max-width: 130px;" ,"max-height="130px" alt="@item.Name">
                         </div>
                         <div class="col-md-6">
                             <div class="card-body">
-                                <p class="card-text"><b>Category: </b>@item.ProductCategoryName</p>
                                 <p class="card-text"><b>Price: </b>@item.Price.ToString("c")</p>
                                 <p class="card-text"><b>Size: </b>@item.size</p>
                                 <p class="card-text"><b>Color: </b>@item.color</p>

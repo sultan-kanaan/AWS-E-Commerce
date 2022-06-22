@@ -21,14 +21,7 @@ namespace AWS_E_Commerce.Pages.Cart
         public List<ProductDTO> products;
         public void OnGet()
         {
-            products = CartDTO.products;
         }
-        public async Task<IActionResult> OnGetAsync(int id)
-        {
-            var product = await _product.GetProduct(id);
-            CartDTO.products.Add(product);
-            string urlAnterior = Request.Headers["Referer"].ToString();
-            return Redirect(urlAnterior);
-        }
+        
     }
 }
