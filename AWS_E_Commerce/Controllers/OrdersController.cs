@@ -90,11 +90,11 @@ namespace AWS_E_Commerce.Controllers
             await _order.StoreOrderAsync(items, userId, userEmailAddress);
             await _shoppingCart.ClearShoppingCartAsync();
 
-            string message = "Order Summary : \n \n ";
+            string message = "Order Summary : <br/> ";
 
             foreach (ShoppingCartItem shopping in items)
             {
-                message += "you bought a " +  shopping.product.Name + "for a price " + shopping.product.Price;
+                message += $"you bought a  {shopping.product.Name}  for a price   {shopping.product.Price} <br/>";
             }
 
             await _email.SendEmail(message, "21029318@student.ltuc.com", "Order Summary");
